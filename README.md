@@ -2,7 +2,6 @@
 
 A beautiful, modern weather application that provides real-time weather data, 5-day forecasts, and dynamic backgrounds that change based on weather conditions. Built with Flask and vanilla CSS featuring stunning glassmorphism design.
 
-![Weather App Banner](https://via.placeholder.com/1200x300/f093fb/ffffff?text=Weather+App+-+Real-time+Forecasts)
 
 ## 🎯 Project Overview
 
