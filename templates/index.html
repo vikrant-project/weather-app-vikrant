@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - Current Weather & Forecast</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="clear-day">
+    <!-- Animated Background Elements -->
+    <div class="weather-animation" id="weatherAnimation"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header with Controls -->
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">🌤️</span>
+                <h1>Weather App</h1>
+            </div>
+            
+            <div class="header-controls">
+                <!-- Dark/Light Mode Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </button>
+                
+                <!-- Temperature Unit Toggle -->
+                <div class="unit-toggle">
+                    <button class="unit-btn active" data-unit="celsius">°C</button>
+                    <button class="unit-btn" data-unit="fahrenheit">°F</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="cityInput" 
+                    class="search-input" 
+                    placeholder="Search for a city..."
+                    autocomplete="off"
+                >
+                <button class="search-btn" id="searchBtn">
+                    <span>🔍</span> Search
+                </button>
+                <button class="location-btn" id="locationBtn" title="Use my location">
+                    <span>📍</span>
+                </button>
+            </div>
+            
+            <!-- Recent Searches -->
+            <div class="recent-searches" id="recentSearches">
+                <p class="recent-label">Recent:</p>
+                <div class="recent-chips" id="recentChips"></div>
+            </div>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading weather data...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage">
+            <span class="error-icon">⚠️</span>
+            <p id="errorText"></p>
+        </div>
+
+        <!-- Current Weather Display -->
+        <section class="current-weather" id="currentWeather">
+            <div class="weather-main">
+                <div class="location-info">
+                    <h2 class="city-name" id="cityName">New Delhi</h2>
+                    <p class="country" id="country">IN</p>
+                </div>
+                
+                <div class="weather-icon-container">
+                    <div class="weather-icon" id="weatherIcon">🌤️</div>
+                    <p class="weather-description" id="weatherDescription">Clear Sky</p>
+                </div>
+                
+                <div class="temperature-display">
+                    <h1 class="temperature" id="temperature">--</h1>
+                    <span class="temp-unit" id="tempUnit">°C</span>
+                </div>
+                
+                <div class="feels-like">
+                    Feels like <span id="feelsLike">--</span><span class="temp-unit-small">°C</span>
+                </div>
+            </div>
+
+            <!-- Weather Details Grid -->
+            <div class="weather-details">
+                <div class="detail-card">
+                    <div class="detail-icon">💧</div>
+                    <div class="detail-info">
+                        <p class="detail-label">Humidity</p>
+                        <p class="detail-value" id="humidity">--%</p>
+                    </div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">💨</div>
+                    <div class="detail-info">
+                        <p class="detail-label">Wind Speed</p>
+                        <p class="detail-value" id="windSpeed">-- km/h</p>
+                    </div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">🌅</div>
+                    <div class="detail-info">
+                        <p class="detail-label">Sunrise</p>
+                        <p class="detail-value" id="sunrise">--:--</p>
+                    </div>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">🌆</div>
+                    <div class="detail-info">
+                        <p class="detail-label">Sunset</p>
+                        <p class="detail-value" id="sunset">--:--</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5-Day Forecast -->
+        <section class="forecast-section" id="forecastSection">
+            <h3 class="forecast-title">5-Day Forecast</h3>
+            <div class="forecast-container" id="forecastContainer">
+                <!-- Forecast cards will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Developed by <strong>Vikrant Rana</strong></p>
+            <p>BCA Aspirant | Delhi, India</p>
+            <p class="api-credit">Powered by <a href="https://openweathermap.org" target="_blank">OpenWeatherMap API</a></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
